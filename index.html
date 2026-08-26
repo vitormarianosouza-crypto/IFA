@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entendendo a Presbiopia - Visão de Perto e Saúde Ocular</title>
+    <style>
+        /* --- RESET E VARIÁVEIS GLÓBAIS (TEMA ESCURO DE ALTO CONTRASTE) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --bg-main: #0a0f1d;        /* Fundo bem escuro / Azul noturno */
+            --card-bg: #131b2e;        /* Fundo dos cartões escuro */
+            --card-border: #2a3859;    /* Borda sutil de alto contraste */
+            --text-main: #ffffff;      /* Texto principal em branco puro */
+            --text-muted: #cbd5e1;     /* Texto secundário bem legível */
+            
+            /* Cores chamativas e neon para destaque de alto contraste */
+            --accent-yellow: #facc15;  /* Amarelo vibrante para títulos e destaques */
+            --accent-cyan: #22d3ee;    /* Ciano vibrante para botões e links */
+            --accent-green: #4ade80;   /* Verde vibrante para confirmações */
+            --accent-red: #f87171;     /* Vermelho vívido para avisos */
+            
+            --radius: 12px;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding-bottom: 60px;
+            font-size: 1.1rem; /* Fonte base ampliada para facilitar a leitura */
+        }
+
+        /* --- HEADER / NAVEGAÇÃO --- */
+        header {
+            background: linear-gradient(135deg, #0f172a, #1e1b4b);
+            border-bottom: 3px solid var(--accent-yellow);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+            color: var(--accent-yellow);
+            text-shadow: 0 2px 10px rgba(250, 204, 21, 0.2);
+        }
+
+        header p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        nav {
+            background: #0f172a;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            border-bottom: 2px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        nav a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.2s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+            background-color: #1e293b;
+            border-color: var(--accent-cyan);
+        }
+
+        /* --- CONTAINER PRINCIPAL --- */
+        .container {
+            max-width: 1100px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--card-border);
+        }
+
+        h2 {
+            color: var(--accent-yellow);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--card-border);
+            padding-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-main);
+            font-size: 1.15rem;
+        }
+
+        strong {
+            color: var(--accent-cyan);
+        }
+
+        /* --- TABELAS DE ALTO CONTRASTE --- */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 1.8rem 0;
+            border-radius: var(--radius);
+            border: 2px solid var(--accent-cyan);
+            box-shadow: 0 4px 15px rgba(34, 211, 238, 0.15);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background-color: #0d1322;
+        }
+
+        th {
+            background-color: #1e293b;
+            color: var(--accent-yellow);
+            padding: 1.2rem;
+            font-size: 1.15rem;
+            font-weight: 800;
+            border-bottom: 2px solid var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 1.2rem;
+            border-bottom: 1px solid var(--card-border);
+            font-size: 1.05rem;
+            color: #ffffff;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background-color: #131d33;
+        }
+
+        tr:hover {
+            background-color: #1c2a4a;
+        }
+
+        /* --- ANATOMIA E COMPORTAMENTO DA LUZ --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        .info-box {
+            background-color: #17233d;
+            border-left: 6px solid var(--accent-cyan);
+            padding: 1.5rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            border-top: 1px solid var(--card-border);
+            border-right: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .info-box h3 {
+            color: var(--accent-yellow);
+            margin-bottom: 0.8rem;
+            font-size: 1.35rem;
+        }
+
+        .info-box ul {
+            margin-left: 1.2rem;
+        }
+
+        .info-box li {
+            margin-bottom: 0.6rem;
+        }
+
+        /* DIAGRAMA ÓPTICO COM CSS */
+        .optic-diagram {
+            background: #050811;
+            color: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-top: 1.8rem;
+            border: 2px solid var(--card-border);
+        }
+
+        .diagram-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 650px;
+            margin: 2rem auto;
+            position: relative;
+            height: 140px;
+            border-top: 2px dashed #475569;
+            border-bottom: 2px dashed #475569;
+        }
+
+        .eye-retina {
+            width: 12px;
+            height: 100%;
+            background-color: var(--accent-red);
+            position: absolute;
+            right: 12%;
+            border-radius: 6px;
+            box-shadow: 0 0 12px var(--accent-red);
+        }
+
+        .eye-retina::after {
+            content: 'Retina';
+            position: absolute;
+            top: -30px;
+            right: -20px;
+            color: var(--accent-red);
+            font-size: 0.95rem;
+            font-weight: bold;
+        }
+
+        .light-ray {
+            position: absolute;
+            left: 5%;
+            height: 3px;
+            background-color: var(--accent-yellow);
+            width: 40%;
+            box-shadow: 0 0 8px var(--accent-yellow);
+        }
+
+        .ray-top { top: 35px; transform: rotate(5deg); transform-origin: left; }
+        .ray-bottom { bottom: 35px; transform: rotate(-5deg); transform-origin: left; }
+
+        .focal-point {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: var(--accent-yellow);
+            border-radius: 50%;
+            right: 1%; /* Foco Atrás da Retina */
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 15px var(--accent-yellow);
+        }
+
+        .focal-point::after {
+            content: 'Ponto Focal (Atrás da Retina)';
+            position: absolute;
+            top: 25px;
+            left: -80px;
+            white-space: nowrap;
+            color: var(--accent-yellow);
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* --- SIMULADOR DA PRESBIOPIA --- */
+        .simulator-box {
+            background-color: #0b1326;
+            border: 3px solid var(--accent-cyan);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .controls {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .slider-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            width: 100%;
+            max-width: 550px;
+        }
+
+        .slider-group label {
+            font-size: 1.2rem;
+            color: var(--accent-yellow);
+        }
+
+        .slider-group input {
+            width: 100%;
+            height: 12px;
+            border-radius: 6px;
+            accent-color: var(--accent-cyan);
+            cursor: pointer;
+            background: #1e293b;
+        }
+
+        #ageLabel {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-cyan);
+            background: #17233d;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--accent-cyan);
+        }
+
+        .btn-glasses {
+            background-color: var(--accent-cyan);
+            color: #040914;
+            border: none;
+            padding: 0.9rem 1.8rem;
+            border-radius: 30px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(34, 211, 238, 0.3);
+        }
+
+        .btn-glasses:hover {
+            background-color: #67e8f9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(34, 211, 238, 0.5);
+        }
+
+        .view-screen {
+            background: #ffffff; /* Fundo claro interno na tela simulada */
+            color: #000000;
+            border-radius: var(--radius);
+            padding: 2.5rem 1.5rem;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border: 4px solid var(--card-border);
+        }
+
+        .simulated-text {
+            font-size: 1.25rem;
+            color: #000000;
+            font-weight: 600;
+            transition: filter 0.2s ease;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        .simulated-image {
+            width: 100%;
+            max-width: 320px;
+            height: 140px;
+            background: linear-gradient(135deg, #0284c7, #0f172a);
+            border-radius: 8px;
+            margin: 1.2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: filter 0.2s ease;
+            border: 2px solid #0284c7;
+        }
+
+        .distance-tag {
+            font-size: 0.95rem;
+            background-color: #0f172a;
+            color: var(--accent-yellow);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 1.2rem;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        /* --- TESTE DE LEITURA DE PERTO (NOVO COMPONENTE) --- */
+        .test-chart-container {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin-top: 1.5rem;
+            text-align: left;
+            border: 4px solid var(--card-border);
+            transition: filter 0.2s ease;
+        }
+
+        .chart-row {
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed #cbd5e1;
+            padding-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chart-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .chart-label {
+            font-weight: bold;
+            color: #0f172a;
+            font-size: 0.85rem;
+            background: #e2e8f0;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .chart-text {
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .line-1 { font-size: 0.75rem; } /* Muito Pequena - Exige foco perfeito */
+        .line-2 { font-size: 0.95rem; } /* Pequena */
+        .line-3 { font-size: 1.2rem; }  /* Média */
+        .line-4 { font-size: 1.5rem; }  /* Grande */
+        .line-5 { font-size: 1.9rem; }  /* Muito Grande */
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+            border-top: 2px solid var(--card-border);
+            margin-top: 4rem;
+            background-color: #070b14;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Presbiopia: A "Vista Cansada"</h1>
+        <p>Guia acessível de alto contraste: entenda a anatomia ocular, sintomas, tratamentos e experimente os testes de visão interativos.</p>
+    </header>
+
+    <nav>
+        <a href="#o-que-e">O que é</a>
+        <a href="#sintomas">Sintomas</a>
+        <a href="#anatomia-luz">Anatomia & Luz</a>
+        <a href="#causas">Causas & Evolução</a>
+        <a href="#tratamento">Tratamentos</a>
+        <a href="#simulador">Simulador & Teste</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- TABELA 1: O QUE É A PRESBIOPIA -->
+        <section id="o-que-e" class="section-card">
+            <h2>🔍 1. O que é a Presbiopia?</h2>
+            <p>
+                A presbiopia é uma condição natural decorrente do envelhecimento ocular que dificulta o foco de objetos próximos. É popularmente conhecida como <strong>"vista cansada"</strong> ou <strong>"síndrome do braço curto"</strong>.
+            </p>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Descrição Detalhada</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Definição Médica</strong></td>
+                            <td>Perda gradual, irreversível e fisiológica da capacidade de acomodação do olho para focar objetos a curta distância.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nome Popular</strong></td>
+                            <td>Vista Cansada ou "Síndrome do Braço Curto" (pelo hábito de esticar os braços para conseguir ler).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Idade de Início</strong></td>
+                            <td>Geralmente surge por volta dos <strong>40 a 45 anos</strong> de idade.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Natureza da Condição</strong></td>
+                            <td>Não é uma doença infectocontagiosa ou lesão, mas um processo natural de envelhecimento biológico dos olhos.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Progressão</strong></td>
+                            <td>Progride gradualmente entre os 40 e 60/65 anos, período em que tende a estabilizar.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- TABELA 2: SINTOMAS -->
+        <section id="sintomas" class="section-card">
+            <h2>⚠️ 2. Principais Sintomas</h2>
+            <p>
+                Os sintomas iniciam discretamente e se intensificam com o tempo, tornando-se mais visíveis ao final do dia ou em ambientes pouco iluminados.
+            </p>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sintoma</th>
+                            <th>Como se Manifesta</th>
+                            <th>Exemplo Prático</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Visão Embaçada de Perto</strong></td>
+                            <td>Dificuldade para obter nitidez em textos ou objetos a menos de 40 cm dos olhos.</td>
+                            <td>Dificuldade para ler mensagens no celular ou bula de remédio.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Afastar Objetos para Ler</strong></td>
+                            <td>Instinto de mover papéis ou telas para longe para conseguir focar a imagem.</td>
+                            <td>Esticar totalmente o braço para ler o cardápio em um restaurante.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Astenopia (Fadiga Ocular)</strong></td>
+                            <td>Sensação de peso, ardência, olhos secos ou cansaço após esforço visual.</td>
+                            <td>Sentir os olhos pesados após 15 minutos de leitura contínua.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cefaleia (Dor de Cabeça)</strong></td>
+                            <td>Dores de cabeça recorrentes na região frontal ou ao redor dos olhos após leitura.</td>
+                            <td>Dor de cabeça no final do dia de trabalho em frente ao computador.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Necessidade de Mais Luz</strong></td>
+                            <td>Exigência de iluminação direta e forte para conseguir enxergar pequenos detalhes.</td>
+                            <td>Precisar de uma luminária forte focada para conseguir colocar a linha na agulha.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ANATOMIA OCULAR E COMPORTAMENTO DA LUZ -->
+        <section id="anatomia-luz" class="section-card">
+            <h2>👁️ 3. Estrutura Ocular Afetada e Comportamento da Luz</h2>
+            <p>
+                A presbiopia altera diretamente o mecanismo de acomodação do olho humano, afetando o modo como as imagens são focadas na retina.
+            </p>
+
+            <div class="grid-2">
+                <div class="info-box">
+                    <h3>Estrutura Ocular Afetada</h3>
+                    <p>Duas estruturas internas sofrem alterações diretas:</p>
+                    <ul>
+                        <li><strong>Cristalino:</strong> A lente natural do olho perde sua flexibilidade e elasticidade original, tornando-se mais rígida com o passar dos anos.</li>
+                        <li><strong>Músculos Ciliares:</strong> Músculos responsáveis por contrair e alterar a curvatura do cristalino. Perdem a força e a capacidade de moldar a lente enrijecida.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>Comportamento da Luz no Olho</h3>
+                    <p>Em um olho jovem sem alterações, os raios de luz convergem <strong>exatamente em cima da retina</strong>.</p>
+                    <p>Na presbiopia, devido à falta de curvatura do cristalino rígido, os raios de luz acabam convergindo <strong>atrás da retina</strong> ao olhar de perto, gerando uma imagem desfocada e borrada.</p>
+                </div>
+            </div>
+
+            <!-- DIAGRAMA VISUAL -->
+            <div class="optic-diagram">
+                <h3 style="color: var(--accent-yellow);">Comportamento da Luz na Presbiopia (Ponto Focal Atrás da Retina)</h3>
+                <div class="diagram-container">
+                    <div class="light-ray ray-top"></div>
+                    <div class="light-ray ray-bottom"></div>
+                    <div class="eye-retina"></div>
+                    <div class="focal-point"></div>
+                </div>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 15px;">
+                    Representação gráfica simplificada: A perda de curvatura do cristalino faz a imagem de perto se formar atrás da linha amarela da retina.
+                </p>
+            </div>
+        </section>
+
+        <!-- CAUSAS E EVOLUÇÃO -->
+        <section id="causas" class="section-card">
+            <h2>🧬 4. Causas e Evolução do Quadro</h2>
+            <p><strong>Causa Principal:</strong> O envelhecimento natural das proteínas do cristalino (especialmente as cristalinas), que se aglomeram e reduzem a flexibilidade da lente, somado ao enrijecimento gradativo dos músculos ciliares.</p>
+
+            <h3 style="margin-top: 1.8rem; color: var(--accent-yellow); font-size: 1.4rem;">Evolução Cronológica da Presbiopia</h3>
+            <ul style="margin-left: 1.5rem; color: var(--text-main); margin-top: 0.8rem;">
+                <li style="margin-bottom: 0.8rem;"><strong>Aos 20-30 Anos:</strong> Cristalino extremamente flexível, capaz de mudar de formato instantaneamente para focar objetos a poucos centímetros do rosto.</li>
+                <li style="margin-bottom: 0.8rem;"><strong>Aos 40-45 Anos (Fase Inicial):</strong> Primeiros sinais evidentes. A elasticidade cai a ponto de tornar desconfortável a leitura prolongada a 30 cm.</li>
+                <li style="margin-bottom: 0.8rem;"><strong>Aos 50 Anos (Fase Moderada):</strong> A perda de foco progride rapidamente. A leitura sem lentes corretivas torna-se muito difícil ou impossível na distância normal de trabalho.</li>
+                <li style="margin-bottom: 0.8rem;"><strong>Aos 60-65 Anos (Fase Avançada / Estabilização):</strong> O cristalino perde quase toda a capacidade de acomodação focal. O grau de correção necessário atinge seu ponto de estabilidade.</li>
+            </ul>
+        </section>
+
+        <!-- TABELA 3: TRATAMENTOS -->
+        <section id="tratamento" class="section-card">
+            <h2>💊 5. Formas de Tratamento e Correção</h2>
+            <p>
+                Embora não haja cura definitiva para deter o envelhecimento do cristalino, seus efeitos podem ser totalmente compensados através destas opções:
+            </p>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Método de Correção</th>
+                            <th>Mecanismo de Ação</th>
+                            <th>Vantagens</th>
+                            <th>Indicação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Óculos Monofocais (Leitura)</strong></td>
+                            <td>Lentes convergentes (grau positivo) que desviam os raios de luz para que foquem exatamente sobre a retina.</td>
+                            <td>Simples, excelente custo-benefício, rápida adaptação.</td>
+                            <td>Pessoas que precisam enxergar de perto eventualmente e possuem boa visão de longe.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lentes Multifocais (Progressivas)</strong></td>
+                            <td>Possuem múltiplos campos focais contínuos (longe na parte superior, intermediário no meio e perto na base).</td>
+                            <td>Permite enxergar em todas as distâncias com o mesmo par de óculos.</td>
+                            <td>Pessoas que já possuem miopia, astigmatismo ou hipermetropia associados.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lentes de Contato (Monovisão)</strong></td>
+                            <td>Ajusta-se um olho para foco de longe e o outro olho para focar de perto.</td>
+                            <td>Liberdade estética sem o uso de armações no rosto.</td>
+                            <td>Pessoas adaptadas ao uso de lentes de contato com boa adaptação cerebral.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cirurgia Refrativa a Laser (PRESBYOND)</strong></td>
+                            <td>Remodela a curvatura da córnea via laser, aumentando a profundidade de foco dos olhos.</td>
+                            <td>Independência permanente de óculos para a maioria das atividades cotidianas.</td>
+                            <td>Pacientes selecionados após avaliação detalhada da córnea pelo oftalmologista.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Implante de Lente Intraocular (LIO)</strong></td>
+                            <td>Substituição do cristalino enrijecido por uma lente artificial multifocal de alta tecnologia.</td>
+                            <td>Trata a presbiopia e previne ou elimina a catarata de forma permanente.</td>
+                            <td>Pacientes acima de 55-60 anos ou que já apresentam início de catarata.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SIMULADOR DA PRESBIOPIA E SEGUNDO TESTE INTERATIVO -->
+        <section id="simulador" class="section-card">
+            <h2>👓 6. Simuladores Interativos de Visão e Testes</h2>
+            <p>
+                Explore os dois testes abaixo para entender visualmente o impacto da presbiopia e como a acuidade para leitura diminui de acordo com o tamanho do texto.
+            </p>
+
+            <!-- TESTE 1: SIMULADOR DE DESFOQUE EM TEXTO E IMAGEM -->
+            <h3 style="color: var(--accent-yellow); margin-bottom: 1rem;">Teste 1: Simulador de Desfoque Geral de Perto</h3>
+            <div class="simulator-box">
+                <div class="controls">
+                    <div class="slider-group">
+                        <label for="blurSlider"><strong>Grau / Idade Simulatória:</strong></label>
+                        <input type="range" id="blurSlider" min="0" max="10" value="5">
+                        <span id="ageLabel">~48 anos (+2.00 DP)</span>
+                    </div>
+
+                    <button class="btn-glasses" id="toggleGlasses">Colocar Óculos de Correção 👓</button>
+                </div>
+
+                <div class="view-screen">
+                    <span class="distance-tag">Visão de Perto (~35 cm)</span>
+
+                    <!-- Texto Simulado -->
+                    <p class="simulated-text" id="simText">
+                        <strong>Texto de Teste:</strong> A presbiopia dificulta a leitura destas pequenas letras sem o auxílio de iluminação adequada ou óculos de grau.
+                    </p>
+
+                    <!-- Imagem Simulada -->
+                    <div class="simulated-image" id="simImg">
+                        [ Imagem Simulada: Tela de Celular ]
+                    </div>
+
+                    <p style="font-size: 1rem; font-weight: bold; color: var(--accent-red); margin-top: 10px;" id="statusNote">
+                        Efeito: Visão embaçada para objetos próximos.
+                    </p>
+                </div>
+            </div>
+
+            <!-- TESTE 2: TABELA DE LEITURA DE PERTO (ESCALA DE JAEGER SIMULADA) -->
+            <h3 style="color: var(--accent-yellow); margin-bottom: 1rem; margin-top: 2rem;">Teste 2: Tabela de Escala de Leitura de Perto</h3>
+            <p>
+                Pessoas com presbiopia perdem primeiro a capacidade de ler as linhas com fontes menores (linhas superiores), conseguindo focar apenas nas letras maiores (linhas inferiores) à medida que a condição avança.
+            </p>
+
+            <div class="test-chart-container" id="readingChart">
+                <div class="chart-row">
+                    <span class="chart-label">J1 (0.50 DP)</span>
+                    <span class="chart-text line-1">Esta linha possui o tamanho de uma bula de remédio ou contrato.</span>
+                </div>
+                <div class="chart-row">
+                    <span class="chart-label">J3 (1.00 DP)</span>
+                    <span class="chart-text line-2">Esta linha equivale ao texto de um livro comum ou mensagem de celular.</span>
+                </div>
+                <div class="chart-row">
+                    <span class="chart-label">J5 (1.75 DP)</span>
+                    <span class="chart-text line-3">Esta linha representa títulos de notícias e jornais.</span>
+                </div>
+                <div class="chart-row">
+                    <span class="chart-label">J7 (2.50 DP)</span>
+                    <span class="chart-text line-4">Esta linha é facilmente lida por textos em placas médias.</span>
+                </div>
+                <div class="chart-row">
+                    <span class="chart-label">J10 (3.00 DP)</span>
+                    <span class="chart-text line-5">Esta linha possui letras bem grandes de destaque.</span>
+                </div>
+            </div>
+
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 10px; text-align: center;">
+                <em>Nota: Os efeitos do controle deslizante no Teste 1 afetam em tempo real a Tabela de Leitura acima.</em>
+            </p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Site Informativo sobre Presbiopia e Saúde Ocular &copy; 2026. Desenvolvido com foco em acessibilidade e alto contraste.</p>
+    </footer>
+
+    <!-- LÓGICA DOS SIMULADORES COM JAVASCRIPT INTEGRADO -->
+    <script>
+        const slider = document.getElementById('blurSlider');
+        const ageLabel = document.getElementById('ageLabel');
+        const simText = document.getElementById('simText');
+        const simImg = document.getElementById('simImg');
+        const readingChart = document.getElementById('readingChart');
+        const toggleBtn = document.getElementById('toggleGlasses');
+        const statusNote = document.getElementById('statusNote');
+
+        let glassesOn = false;
+
+        function updateSimulation() {
+            const val = parseInt(slider.value);
+            
+            // Mapeamento de idades e dioptrias
+            let ageText = "";
+            let blurPx = 0;
+
+            if (val === 0) {
+                ageText = "Jovem (< 35 anos) - Sem Presbiopia";
+                blurPx = 0;
+            } else if (val <= 3) {
+                ageText = "~42 anos (+1.00 DP) - Inicial";
+                blurPx = val * 0.9;
+            } else if (val <= 7) {
+                ageText = "~50 anos (+2.00 DP) - Moderada";
+                blurPx = val * 1.0;
+            } else {
+                ageText = "~60+ anos (+3.00 DP) - Avançada";
+                blurPx = val * 1.25;
+            }
+
+            ageLabel.innerText = ageText;
+
+            if (glassesOn) {
+                simText.style.filter = "blur(0px)";
+                simImg.style.filter = "blur(0px)";
+                readingChart.style.filter = "blur(0px)";
+                statusNote.innerText = "Efeito: Óculos Aplicados! Visão nítida restabelecida em ambos os testes.";
+                statusNote.style.color = "#16a34a"; // Verde para sucesso
+            } else {
+                simText.style.filter = `blur(${blurPx}px)`;
+                simImg.style.filter = `blur(${blurPx}px)`;
+                readingChart.style.filter = `blur(${blurPx * 0.85}px)`; // Aplica o desfoque simultaneamente no Teste 2
+                
+                if (val === 0) {
+                    statusNote.innerText = "Efeito: Visão perfeitamente nítida.";
+                    statusNote.style.color = "#16a34a";
+                } else {
+                    statusNote.innerText = `Efeito: Desfoque de ${blurPx.toFixed(1)}px simulado na retina para objetos próximos.`;
+                    statusNote.style.color = "#dc2626"; // Vermelho para aviso
+                }
+            }
+        }
+
+        slider.addEventListener('input', updateSimulation);
+
+        toggleBtn.addEventListener('click', () => {
+            glassesOn = !glassesOn;
+            if (glassesOn) {
+                toggleBtn.innerText = "Tirar Óculos ❌";
+                toggleBtn.style.backgroundColor = "#f87171";
+                toggleBtn.style.color = "#ffffff";
+            } else {
+                toggleBtn.innerText = "Colocar Óculos de Correção 👓";
+                toggleBtn.style.backgroundColor = "var(--accent-cyan)";
+                toggleBtn.style.color = "#040914";
+            }
+            updateSimulation();
+        });
+
+        // Inicializa o simulador na carga
+        updateSimulation();
+    </script>
+</body>
+</html>
